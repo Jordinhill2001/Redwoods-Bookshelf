@@ -1,0 +1,114 @@
+:root{
+  --shelf-height: 64vh;
+  --book-width: 72px;
+  --book-height: 120px;
+  --accent: #6b3c1f;
+  --cover-shadow: rgba(0,0,0,0.25);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial}
+.app{min-height:100%;display:flex;flex-direction:column;background:#0b150f;color:#fff}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.1));backdrop-filter: blur(4px)}
+.topbar h1{margin:0;font-size:1.1rem}
+.controls{display:flex;gap:10px;align-items:center}
+.controls button{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.06);color:#fff;padding:8px 10px;border-radius:8px}
+.controls .toggle{display:flex;align-items:center;gap:8px;color:#fff;font-size:0.9rem}
+
+/* Shelf area with redwoods background */
+#shelfWrap{
+  position:relative;
+  height:var(--shelf-height);
+  padding:24px;
+  background-image: url('assets/redwoods.jpg');
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  overflow:auto;
+}
+
+/* Bookshelf (wood) base */
+#shelf{
+  position:relative;
+  width: min(1100px, 95%);
+  height: 320px;
+  background: linear-gradient(180deg,#7a4d2c 0%, #3f2a1e 100%);
+  border-radius:10px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+  padding: 20px 24px;
+  display:flex;
+  align-items:flex-end;
+  gap: 10px;
+}
+
+/* Book element */
+.book{
+  width:var(--book-width);
+  height:var(--book-height);
+  border-radius:6px;
+  position:relative;
+  cursor:pointer;
+  box-shadow: 0 6px 10px var(--cover-shadow), inset 0 2px rgba(255,255,255,0.03);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:6px;
+  color: #fff;
+  font-size:12px;
+  line-height:1.05;
+  user-select:none;
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+
+/* book spine accent */
+.book::before{
+  content:'';
+  position:absolute;
+  left:6px;
+  top:6px;
+  bottom:6px;
+  width:10px;
+  background:rgba(0,0,0,0.12);
+  border-radius:3px;
+  transform: perspective(100px) rotateY(6deg);
+}
+
+/* hover */
+.book:hover{transform: translateY(-6px) rotate(-1deg); box-shadow: 0 12px 20px rgba(0,0,0,0.45);}
+
+/* small label shown on the spine at bottom */
+.bookLabel{
+  position:absolute;
+  bottom:6px;
+  left:8px;
+  right:8px;
+  font-weight:600;
+  font-size:11px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+/* Modal */
+.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.6);z-index:999}
+.modal[aria-hidden="false"]{display:flex}
+.modal-content{width:min(960px,95%);max-height:90%;background:#fff;color:#000;border-radius:8px;overflow:auto;padding:12px;position:relative}
+.modal img{max-width:100%;height:auto;display:block;margin:0 auto 12px}
+.modal pre{white-space:pre-wrap;font-family:inherit;background:#f6f6f6;padding:12px;border-radius:6px}
+.modal .close{position:absolute;right:8px;top:8px;background:transparent;border:0;font-size:28px;cursor:pointer}
+
+/* footer */
+.footer{padding:12px;text-align:center;background:linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0.12));}
+
+/* hint when empty */
+.hint{position:absolute;left:calc(50% - 90px);bottom:12px;background:rgba(0,0,0,0.45);padding:8px 12px;border-radius:8px}
+
+/* responsive */
+@media (max-width:600px){
+  :root{--book-width:60px;--book-height:96px}
+  .topbar h1{font-size:1rem}
+  #shelf{height:260px;padding:12px}
+}
