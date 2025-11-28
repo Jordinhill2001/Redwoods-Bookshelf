@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Redwood Bookshelf</title>
+
+  <!-- PWA manifest -->
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- Icons for Apple -->
+  <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Tesseract.js for OCR (client-side) -->
+  <script src="https://unpkg.com/tesseract.js@4.1.1/dist/tesseract.min.js"></script>
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <h1>Redwood Bookshelf</h1>
+      <div class="controls">
+        <button id="addBookBtn">+ Add Note</button>
+        <button id="importBtn">Import</button>
+        <button id="exportBtn">Export</button>
+        <label class="toggle">
+          <input id="syncToggle" type="checkbox">
+          <span>Cloud (optional)</span>
+        </label>
+      </div>
+    </header>
+
+    <section id="shelfWrap">
+      <div id="shelf" aria-live="polite"></div>
+      <div id="emptyHint" class="hint">Tap “Add Note” to add your first book</div>
+    </section>
+
+    <!-- Hidden file input triggers camera on mobile -->
+    <input id="fileInput" type="file" accept="image/*" capture="environment" style="display:none">
+
+    <!-- Modal for viewing book -->
+    <div id="modal" class="modal" aria-hidden="true">
+      <div class="modal-content">
+        <button class="close" id="modalClose">&times;</button>
+        <div id="modalBody"></div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <small>Made with ❤️ — store locally or enable cloud sync (optional)</small>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
