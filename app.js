@@ -5,7 +5,8 @@
 
 const fileInput = document.getElementById('fileInput');
 const addBookBtn = document.getElementById('addBookBtn');
-const shelf = document.getElementById('shelf');
+const shelfTop = document.getElementById('shelfTop');
+const shelfBottom = document.getElementById('shelfBottom');
 const emptyHint = document.getElementById('emptyHint');
 const modal = document.getElementById('modal');
 const modalBody = document.getElementById('modalBody');
@@ -40,14 +41,45 @@ function saveBooks(){
   localStorage.setItem(STORAGE_KEY, JSON.stringify(books));
 }
 
+/* Decide which shelf to place a book on */
+function placeBookElement(bookElement, index) {
+  if (index < 10) {
+    shelfTop.appendChild(bookElement);
+  } else {
+    shelfBottom.appendChild(bookElement);
+  }
+}
 /* Render shelf */
-function renderBooks(){
-  shelf.innerHTML = '';
-  if(books.length === 0){
+function renderBooks() {
+  shelfTop.innerHTML = '';
+  shelfBottom.innerHTML = '';
+
+  if (books.length === 0) {
     emptyHint.style.display = 'block';
   } else {
     emptyHint.style.display = 'none';
   }
+
+  books.forEach((b, idx) => {
+    const el = document.createElement('div');
+    el.className = 'book';
+    el.style.background = `linear-gradient(180deg, ${b.cover} 0%, rgba(0,0,0,0.08) 100%)`;
+    el.setAttribute('role', 'button');
+    el.setAttribute('aria-label', b.title || 'Note book');
+
+    // label
+    const label = document.createElement('div');
+    label.className = 'bookLabel';
+    label.textContent = b.title || (b.excerpt ? b.excerpt.substring(0, 18) : `Note ${idx+1}`);
+    el.appendChild(label);
+
+    // open on click
+    el.addEventListener('click', () => openBook(idx));
+
+    // place on top or bottom shelf depending on index
+    placeBookElement(el, idx);
+  });
+}
 
   books.forEach((b, idx) => {
     const el = document.createElement('div');
