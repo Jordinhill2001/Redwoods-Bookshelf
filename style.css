@@ -20,7 +20,7 @@ html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Robo
   position:relative;
   height:var(--shelf-height);
   padding:24px;
-  background-image: url('/redwoodphoto.pdf.JPG');
+  background-image: url('redwoodphoto.pdf.JPG');
   background-size:cover;
   background-position:center;
   display:flex;
