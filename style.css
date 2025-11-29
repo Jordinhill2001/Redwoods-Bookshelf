@@ -42,7 +42,19 @@ html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Robo
   align-items:flex-end;
   gap: 10px;
 }
-
+.shelf {
+  width: 90%;
+  min-height: 250px;
+  background: linear-gradient(#8b5a2b, #5a3a1a);
+  border-radius: 12px;
+  margin: 40px auto;
+  box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.4);
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: flex-start;
+}
 /* Book element */
 .book{
   width:var(--book-width);
