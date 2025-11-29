@@ -5,6 +5,14 @@
   --accent: #6b3c1f;
   --cover-shadow: rgba(0,0,0,0.25);
 }
+/* Redwood background */
+body {
+  margin: 0;
+  padding: 0;
+  background: url("assets/redwoods.jpg") no-repeat center center fixed;
+  background-size: cover;
+  font-family: sans-serif;
+}
 
 *{box-sizing:border-box}
 html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial}
