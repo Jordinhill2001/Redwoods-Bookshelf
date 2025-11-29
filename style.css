@@ -5,14 +5,6 @@
   --accent: #6b3c1f;
   --cover-shadow: rgba(0,0,0,0.25);
 }
-/* Redwood background */
-body {
-  margin: 0;
-  padding: 0;
-  background: url("assets/redwoodphoto.pdf.JPG") no-repeat center center fixed;
-  background-size: cover;
-  font-family: sans-serif;
-}
 
 *{box-sizing:border-box}
 html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial}
@@ -28,7 +20,7 @@ html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Robo
   position:relative;
   height:var(--shelf-height);
   padding:24px;
-  background-image: url('assets/redwoods.jpg');
+  background-image: url('assets/redwoodphoto.pdf.JPG');
   background-size:cover;
   background-position:center;
   display:flex;
